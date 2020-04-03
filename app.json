@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Corona Tracker",
+    "slug": "vamosCoronavamos",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "android": {
+      "splash": {
+        "mdpi": "./assets/img/splash/SplashScreen-mdpi.png",
+        "hdpi": "./assets/img/splash/SplashScreen-hdpi.png",
+        "xhdpi": "./assets/img/splash/SplashScreen-xhdpi.png",
+        "xxhdpi": "./assets/img/splash/SplashScreen-xxhdpi.png",
+        "xxxhdpi": "./assets/img/splash/SplashScreen-xxxhdpi.png",
+        "resizeMode": "cover"
+      }},
+      "ios": {
+        "splash": {
+          "image": "./assets/img/splash/SplashScreen.png",
+          "resizeMode": "cover"
+        }
+      },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
