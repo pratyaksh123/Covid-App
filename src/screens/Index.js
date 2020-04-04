@@ -11,10 +11,10 @@ const getFonts=()=>{
     })
 }
 
-const HomeScreen =()=>{
+const HomeScreen =({navigation})=>{
     const [Fonts,setFonts]=useState(false)
     if(Fonts){
-        return(<Index/>)
+        return(<Index navigation={navigation} />)
     }else{
        return(
            <>

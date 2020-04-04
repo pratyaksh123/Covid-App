@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Corona Tracker",
-    "slug": "vamosCoronavamos",
+    "slug": "vetecorona",
     "platforms": [
       "ios",
       "android",
@@ -17,18 +17,20 @@
         "xxhdpi": "./assets/img/splash/SplashScreen-xxhdpi.png",
         "xxxhdpi": "./assets/img/splash/SplashScreen-xxxhdpi.png",
         "resizeMode": "cover"
-      }},
-      "ios": {
-        "splash": {
-          "image": "./assets/img/splash/SplashScreen.png",
-          "resizeMode": "cover"
-        }
-      },
+      }
+    },
+    "ios": {
+      "splash": {
+        "image": "./assets/img/splash/SplashScreen.png",
+        "resizeMode": "cover"
+      }
+    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": "Realtime Coronavirus Data updates."
   }
 }
