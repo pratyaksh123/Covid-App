@@ -1,47 +1,37 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, Button } from 'react-native'
 import Corona from "../../api/data"
-
+import { AppLoading } from 'expo'
 
 const Index = () => {
     const [total, setTotal] = useState([])
-    const api = async () => {
-        try {
+    const api =  async () => {
             const response = await Corona.get()
-            return response
-        }
-        catch (e) {
-            return ("Please Check your internet connection or try again later")
-        }
+            setTotal(response.data)
     }
 
-    // useEffect(() => {
-    //     api()
-    //         .then((response) => { 
-    //             const data = [response.data]
-    //             setTotal(data)
-    //             console.log(total)
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //         })
-    // }, [])
+    useEffect(()=>{api()},[])
 
-
+    const ConvertToIndianSystem=(string)=>{
+        var x=string;
+        x=x.toString();
+        var lastThree = x.substring(x.length-3);
+        var otherNumbers = x.substring(0,x.length-3);
+        if(otherNumbers != '')
+            lastThree = ',' + lastThree;
+        var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+        return res;
+    }
+   
+    console.log(total)
     return (
         <View style={style.parent}>
             <Text style={style.index} >Corona Virus</Text>
             <Text style={style.index1} >World at a Glance</Text>
-            <View style={style.ButtonData}><Text style={{fontFamily:'Bebas Neue',fontSize:23}}>Confirmed - 1,34,000</Text></View>
-            <View style={style.ButtonData}><Text style={{fontFamily:'Bebas Neue',fontSize:23}}>Recovered - 2,50,000</Text></View>
-            <View style={style.ButtonData}><Text style={{fontFamily:'Bebas Neue',fontSize:23}}>Critical- 4,00,00</Text></View>
-            <View style={style.ButtonData}><Text style={{fontFamily:'Bebas Neue',fontSize:23}}>Deaths - 50,000</Text></View>
-            {/* <Text style={style.data}>
-            Confirmed - {total[0][0].confirmed} {"\n"}
-            Recovered - {total[0][0].recovered} {"\n"}
-            Critical - {total[0][0].critical}{"\n"}
-            Deaths - {total[0][0].deaths}{"\n"}
-            </Text> */}
+            {total.length===0?(<View style={{alignItems:'center',justifyContent:'center',flex:1}}><Text style={{fontFamily:'Bebas Neue',fontSize:23,color:'white',}} >Loading..</Text></View>):(<View style={style.ButtonData}><Text style={{fontFamily:'Bebas Neue',fontSize:23}}>Confirmed - {ConvertToIndianSystem(total[0].confirmed)}</Text></View>)}
+            {total.length===0?(null):(<View style={style.ButtonData}><Text style={{fontFamily:'Bebas Neue',fontSize:23}}>Recovered - {ConvertToIndianSystem(total[0].recovered)} </Text></View>)}
+            {total.length===0?(null):(<View style={style.ButtonData}><Text style={{fontFamily:'Bebas Neue',fontSize:23}}>Critical - {ConvertToIndianSystem(total[0].critical)}</Text></View>)}
+            {total.length===0?(null):(<View style={style.ButtonData}><Text style={{fontFamily:'Bebas Neue',fontSize:23}}>Deaths - {ConvertToIndianSystem(total[0].deaths)}</Text></View>)}
 
             <View style={{flexDirection:'row',}}>
             <TouchableOpacity onPress={() => {
@@ -118,10 +108,6 @@ const Index = () => {
                     <Text style={style.buttonText}>All Countries</Text>
                 </View>
             </TouchableOpacity>
-
-
-
-
             </View>
         </View>
     )
