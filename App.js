@@ -1,13 +1,13 @@
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
-import Index from "./src/screens/Index"
+import HomeScreen from "./src/screens/Index"
 
 const Navigator=createStackNavigator({
-  Index:Index,
+  Index:HomeScreen,
 },{
   initialRouteName:'Index',
   defaultNavigationOptions:{
-    title:'Vamos Corona',
+    headerTitle:null,
     headerTitleAlign:'center',
     headerStyle:{
       backgroundColor:'#003da1',
