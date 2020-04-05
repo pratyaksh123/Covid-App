@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, Button ,ScrollView} from 'react-native'
 import Corona from "../../api/data"
-import { AppLoading } from 'expo'
 import normalize from 'react-native-normalize'
 
 
-const Index = ({ navigation }) => {
+
+
+
+
+export const Index = ({ navigation }) => {
     const [total, setTotal] = useState([])
     const api = async () => {
         const response = await Corona.get()
@@ -180,4 +183,3 @@ const style = StyleSheet.create({
     }
 })
 
-export default Index
