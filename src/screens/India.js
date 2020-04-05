@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity, Button,Image } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity,Image } from 'react-native'
 import {IndiaAPI} from "../../api/data"
 import normalize from 'react-native-normalize'
 
 
-const Home=()=>{
+const Home=({navigation})=>{
     const [results,setResult]=useState([])
 
     const API= async()=>{
@@ -34,14 +34,14 @@ const Home=()=>{
             <Text style={{fontFamily:"Agency FB",color:'white',textAlign:'center',}}>Updated- {results.lastupdatedtime}</Text>
             <View style={{alignItems:'center'}}>
 
-            {results.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', marginVertical:normalize(180),}}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23), color: 'white', }} >Loading..</Text></View>) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) }}>Confirmed - {ConvertToIndianSystem(results.confirmed)}</Text></View>)}
+            {results.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', marginVertical:normalize(180),}}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23), color: 'white', }} >Loading..</Text></View>) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) ,color:'#FF4600'}}>Confirmed - {ConvertToIndianSystem(results.confirmed)}</Text></View>)}
 
 
-            {results.length === 0 ? (null) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) }}>Active - {ConvertToIndianSystem(results.active)}</Text></View>)}
+            {results.length === 0 ? (null) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#1B41D9' }}>Active - {ConvertToIndianSystem(results.active)}</Text></View>)}
 
-            {results.length === 0 ? (null) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) }}>Deaths - {ConvertToIndianSystem(results.deaths)}</Text></View>)}
+            {results.length === 0 ? (null) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#5A5350' }}>Deaths - {ConvertToIndianSystem(results.deaths)}</Text></View>)}
 
-            {results.length === 0 ? (null) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) }}>Recovered - {ConvertToIndianSystem(results.recovered)}</Text></View>)}
+            {results.length === 0 ? (null) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#49A828' }}>Recovered - {ConvertToIndianSystem(results.recovered)}</Text></View>)}
             </View>
 
             <View style={{marginTop:normalize(-80)}}>
@@ -53,8 +53,8 @@ const Home=()=>{
                     </View>
                 </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => {
-                    navigation.navigate('Home')
+            <TouchableOpacity  onPress={() => {
+                    navigation.navigate('StateList')
                 }} style={styles.index}>
                     <View style={styles.button}>
                         <Text style={styles.buttonText}>Check State/District-wise Data</Text>

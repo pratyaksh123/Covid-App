@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity, Button } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, Button ,ScrollView} from 'react-native'
 import Corona from "../../api/data"
 import { AppLoading } from 'expo'
 import normalize from 'react-native-normalize'
@@ -30,10 +30,20 @@ const Index = ({ navigation }) => {
         <View style={style.parent}>
             <Text style={style.index} >Corona Virus</Text>
             <Text style={style.index1} >World at a Glance</Text>
-            {total.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23), color: 'white', }} >Loading..</Text></View>) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) }}>Confirmed - {ConvertToIndianSystem(total[0].confirmed)}</Text></View>)}
-            {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) }}>Recovered - {ConvertToIndianSystem(total[0].recovered)} </Text></View>)}
-            {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) }}>Critical - {ConvertToIndianSystem(total[0].critical)}</Text></View>)}
-            {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) }}>Deaths - {ConvertToIndianSystem(total[0].deaths)}</Text></View>)}
+            {total.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23), color: 'white', }} >Loading..</Text></View>) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#FF4600' }}>Confirmed - {ConvertToIndianSystem(total[0].confirmed)}</Text></View>)}
+
+
+
+
+
+
+            {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#1B41D9' }}>Critical - {ConvertToIndianSystem(total[0].critical)}</Text></View>)}
+
+
+            {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) ,color:'#49A828'}}>Recovered - {ConvertToIndianSystem(total[0].recovered)} </Text></View>)}
+
+
+            {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#5A5350', }}>Deaths - {ConvertToIndianSystem(total[0].deaths)}</Text></View>)}
 
             <View style={{ flexDirection: 'row', }}>
                 <TouchableOpacity onPress={() => {
@@ -51,7 +61,7 @@ const Index = ({ navigation }) => {
                     </View>
                 </TouchableOpacity>
                 
-                <TouchableOpacity onPress={() => {
+                <TouchableOpacity navigation={navigation} onPress={() => {
                     navigation.navigate('Home')
                 }} style={style.index}>
                     <View style={style.button}>
@@ -152,6 +162,8 @@ const style = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#003da1',
         flex: 1,
+        borderColor:'white',
+        borderWidth:2,
     },
     ButtonData: {
         height: "10%",
