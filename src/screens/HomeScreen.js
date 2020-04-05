@@ -28,9 +28,11 @@ const Index = ({ navigation }) => {
     console.log(total)
     return (
         <View style={style.parent}>
+            <ScrollView contentContainerStyle={{flexGrow:1}}>
+                <View style={{alignItems:'center',paddingBottom:normalize(150)}}>
             <Text style={style.index} >Corona Virus</Text>
             <Text style={style.index1} >World at a Glance</Text>
-            {total.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23), color: 'white', }} >Loading..</Text></View>) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#FF4600' }}>Confirmed - {ConvertToIndianSystem(total[0].confirmed)}</Text></View>)}
+            {total.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center',paddingVertical:normalize(170) }}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23), color: 'white', }} >Loading..</Text></View>) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#FF4600' }}>Confirmed - {ConvertToIndianSystem(total[0].confirmed)}</Text></View>)}
 
 
 
@@ -70,8 +72,8 @@ const Index = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
-
-            <View style={{ flexDirection: 'row', marginTop: normalize(-20), }}>
+            
+            <View style={{ flexDirection: 'row', marginTop: normalize(-20) }}>
                 <TouchableOpacity onPress={() => {
                     api()
                         .then((response) => {
@@ -86,7 +88,7 @@ const Index = ({ navigation }) => {
                         alignSelf: 'center',
                         borderRadius: normalize(10),
                         marginBottom: normalize(30),
-                        width: normalize(160),
+                        width: normalize(150),
                         alignItems: 'center',
                         backgroundColor: '#157ffb',
                         marginHorizontal: normalize(20),
@@ -105,11 +107,13 @@ const Index = ({ navigation }) => {
                             console.log(error)
                         })
                 }} style={style.index}>
+
+
                     <View style={{
                         alignSelf: 'center',
                         borderRadius: normalize(10),
                         marginBottom: normalize(30),
-                        width: normalize(160),
+                        width: normalize(150),
                         alignItems: 'center',
                         backgroundColor: '#157ffb',
                         marginHorizontal: normalize(20),
@@ -119,6 +123,8 @@ const Index = ({ navigation }) => {
                     </View>
                 </TouchableOpacity>
             </View>
+            </View>
+            </ScrollView>
         </View>
     )
 }
@@ -128,7 +134,7 @@ const style = StyleSheet.create({
     index: {
         color: 'white',
         fontFamily: "Bebas Neue",
-        fontSize: normalize(60),
+        fontSize: normalize(70),
         textAlign: "center",
     },
     index1: {
@@ -141,7 +147,7 @@ const style = StyleSheet.create({
         alignSelf: 'center',
         borderRadius: normalize(10),
         marginBottom: normalize(30),
-        width: normalize(160),
+        width: normalize(150),
         alignItems: 'center',
         backgroundColor: '#159588',
         marginHorizontal: normalize(20),
@@ -162,11 +168,9 @@ const style = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#003da1',
         flex: 1,
-        borderColor:'white',
-        borderWidth:2,
     },
     ButtonData: {
-        height: "10%",
+        height: "12%",
         borderRadius: normalize(30),
         backgroundColor: 'white',
         marginVertical: normalize(13),

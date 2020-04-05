@@ -17,11 +17,21 @@ const State=()=>{
 
     return(
         <View style={styles.parent}>
+             <ScrollView style={{flexGrow:1}}>
+                 <View style={{paddingBottom:1000}}>
             <Text style={styles.text}>State Wise Data</Text>
-            <ScrollView>
-            <Detail/>
-            </ScrollView>
+           
+                
+                <Detail/>
+                <Detail/>
+                <Detail/>
+                <Detail/>
+                <Detail/>
+                </View>
+                </ScrollView>
+                
         </View>
+        
         
     )
 }
@@ -32,7 +42,7 @@ const styles=StyleSheet.create({
     },
     text:{
         fontFamily:'Bebas Neue',
-        fontSize:normalize(70),
+        fontSize:normalize(60),
         color:'white',
         textAlign:'center',
     }
