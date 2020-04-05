@@ -1,11 +1,7 @@
-import React, { useState, useEffect,Component } from 'react'
+import React, { useState, useEffect} from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, Button ,ScrollView} from 'react-native'
 import Corona from "../../api/data"
 import normalize from 'react-native-normalize'
-
-
-
-
 
 
 export const Index = ({ navigation }) => {
@@ -27,8 +23,6 @@ export const Index = ({ navigation }) => {
         var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
         return res;
     }
-
-    console.log(total)
     return (
         <View style={style.parent}>
             <ScrollView contentContainerStyle={{flexGrow:1}}>
@@ -36,10 +30,6 @@ export const Index = ({ navigation }) => {
             <Text style={style.index} >Corona Virus</Text>
             <Text style={style.index1} >World at a Glance</Text>
             {total.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center',paddingVertical:normalize(170) }}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23), color: 'white', }} >Loading..</Text></View>) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#FF4600' }}>Confirmed - {ConvertToIndianSystem(total[0].confirmed)}</Text></View>)}
-
-
-
-
 
 
             {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#1B41D9' }}>Critical - {ConvertToIndianSystem(total[0].critical)}</Text></View>)}
@@ -77,16 +67,12 @@ export const Index = ({ navigation }) => {
 
             
             <View style={{ flexDirection: 'row', marginTop: normalize(-20) }}>
+
+
                 <TouchableOpacity onPress={() => {
-                    api()
-                        .then((response) => {
-                            const data = [response.data]
-                            setTotal(data)
-                        })
-                        .catch((error) => {
-                            console.log(error)
-                        })
-                }} style={style.index}>
+                    navigation.navigate('Safety')
+                }} 
+                     style={style.index}>
                     <View style={{
                         alignSelf: 'center',
                         borderRadius: normalize(10),
@@ -100,15 +86,10 @@ export const Index = ({ navigation }) => {
                         <Text style={style.buttonText}>Safety Tips</Text>
                     </View>
                 </TouchableOpacity>
+
+
                 <TouchableOpacity onPress={() => {
-                    api()
-                        .then((response) => {
-                            const data = [response.data]
-                            setTotal(data)
-                        })
-                        .catch((error) => {
-                            console.log(error)
-                        })
+                    navigation.navigate('World')
                 }} style={style.index}>
 
 

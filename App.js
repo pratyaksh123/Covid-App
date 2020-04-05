@@ -4,6 +4,8 @@ import {createStackNavigator} from 'react-navigation-stack'
 import {HomeScreen} from "./src/screens/Index"
 import Home from "./src/screens/India"
 import State from "./src/screens/StateWise"
+import WorldData from "./src/screens/CountryList"
+import Safety from "./src/screens/SafetyTips"
 import {createDrawerNavigator} from 'react-navigation-drawer'
 import {Developer} from "./src/screens/Developer"
 import HamburgerIcon from './src/screens/Developer';
@@ -12,10 +14,15 @@ import HamburgerIcon from './src/screens/Developer';
 
 const Navigator=createStackNavigator({
   Index:HomeScreen,
+  World:WorldData,
   Home:Home,
+  Safety:Safety,
   StateList:State,
 },{
   initialRouteName:'Index',
+  navigationOptions:{
+    
+  },
   defaultNavigationOptions:{
     headerLeft:(<HamburgerIcon/>),
     headerTitle:null,

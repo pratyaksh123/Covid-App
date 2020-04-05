@@ -1,9 +1,8 @@
 import * as Font from 'expo-font'
 import {AppLoading} from 'expo';
 import {Index} from "./HomeScreen"
-import React,{ useState,Component } from 'react'
-import { withNavigation } from 'react-navigation';
-import Icon from 'react-native-vector-icons/AntDesign';
+import React,{ useState} from 'react'
+
 
 const getFonts=()=>{
     return Font.loadAsync({

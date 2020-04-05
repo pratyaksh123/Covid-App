@@ -12,7 +12,6 @@ const Home=({navigation})=>{
         setResult(response.data.total_values)
     }
     useEffect(()=>{API()},[])
-    console.log(results.active)
 
     const ConvertToIndianSystem = (string) => {
         var x = string;

@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import {Text,View,StyleSheet,TouchableOpacity,ScrollView} from 'react-native'
+import {Text,View,StyleSheet,ScrollView} from 'react-native'
 import {IndiaAPI} from "../../api/data"
 import normalize from 'react-native-normalize'
 import Detail from "../components/StateDetail"
@@ -7,19 +7,12 @@ import Detail from "../components/StateDetail"
 
 const State=()=>{
     const [results,setResult]=useState([])
-    const [names,setNames]=useState([])
 
     const API= async()=>{
         const response= await IndiaAPI.get()
         setResult(response.data.state_wise)
-        setNames('Tamil Nadu')
     }
     useEffect(()=>{API()},[])
-   
-    // console.log(results.Maharashtra.recovered)
-    console.log(results)
-    const StateArray=Object.keys(results)
-    
     
 
     return(
