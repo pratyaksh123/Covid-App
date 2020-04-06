@@ -51,6 +51,26 @@ class ShareIcon extends Component{
 export const Shareicon=withNavigation(ShareIcon)
 
 
+class BackButton extends Component{
+    render() {
+    return (
+        <TouchableOpacity
+        style={{
+            width: 44,
+            height: 44,
+            marginLeft: 20,
+            marginTop: normalize(30),
+        }}
+        onPress={()=>{
+            this.props.navigation.openDrawer();
+        }}>
+            <Icon name='arrow-left' size={20} color='white'/>
+        </TouchableOpacity>
+    )
+    };
+}
+export const Back=withNavigation(BackButton)
+
 const getFonts=()=>{
     return Font.loadAsync({
         'Bebas Neue':require('../../assets/fonts/BebasNeue-Regular.otf'),

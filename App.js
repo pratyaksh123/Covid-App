@@ -12,21 +12,24 @@ import HamburgerIcon from './src/screens/Developer';
 import {Shareicon} from './src/screens/Index';
 
 
+
 const Navigator=createStackNavigator({
   Index:{screen:HomeScreen,
     navigationOptions:{
+      headerLeft:(<HamburgerIcon/>),
       headerTitle:'#StayHome',
       headerRight:(<Shareicon/>),
     }
   },
   World:WorldData,
-  Home:Home,
+  Home:{screen:Home,
+  },
   Safety:Safety,
   StateList:State,
 },{
   initialRouteName:'Index',
   defaultNavigationOptions:{
-    headerLeft:(<HamburgerIcon/>),
+    headerRight:(<Shareicon/>),
     headerTitle:null,
     headerTitleAlign:'center',
     headerTintColor:'white',

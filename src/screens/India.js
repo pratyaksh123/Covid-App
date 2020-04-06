@@ -24,6 +24,7 @@ const Home=({navigation})=>{
         return res;
     }
 
+
     return(
         <View style={styles.parent}>
 
