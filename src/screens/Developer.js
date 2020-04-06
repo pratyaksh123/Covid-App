@@ -3,6 +3,7 @@ import {Text,View,StyleSheet,TouchableOpacity,Image,ScrollView, Linking} from 'r
 import normalize from 'react-native-normalize'
 import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import Social from "../components/Social"
 
 
 
@@ -37,7 +38,6 @@ export const Developer=(props)=>{
     
     
     return(
-       
         <View style={{flex:1,backgroundColor:'#003da1'}}> 
         <ScrollView>
             <View style={{paddingBottom:200}}>
@@ -45,7 +45,7 @@ export const Developer=(props)=>{
         <View style={{justifyContent:'center'}}>
        
         
-        <Text style={styles.text1}>This is an open-source cross platform application built on react native, for realtime Corona Virus Updates.Contributions are welcome</Text>
+        <Text style={styles.text1}>This is an open-source cross platform application built on react native, for realtime Corona Virus Data Updates.Contributions are welcome</Text>
 
         <TouchableOpacity onPress={()=>{openURL('https://github.com/pratyaksh123/Vete_Corona')}} style={{flexDirection:'row',height:"10%",alignItems:'center',justifyContent:'center',margin:normalize(30,"height")}}>
             <Image style={styles.image} source={require("../../assets/img/25231.png")} />
@@ -53,7 +53,7 @@ export const Developer=(props)=>{
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>{openURL('mailto:tyagi.6@iitj.ac.in')}} style={{flexDirection:'row',height:"10%",alignItems:'center',justifyContent:'center'}}>
             <Image style={styles.image} source={require("../../assets/img/mail.png")} />
-                <Text style={styles.text1}>   Contact</Text>
+                <Text style={styles.text1}>  Feedback/Bugs ? </Text>
         </TouchableOpacity>
 
 
@@ -72,7 +72,7 @@ export const Developer=(props)=>{
 
             <Text style={styles.text4}>B.Tech (1st yr)</Text>
             <Text style={styles.text3}>Indian Institute Of Technology Jodhpur</Text>
-            
+            <Social/>
 
             </View>
             </View>
