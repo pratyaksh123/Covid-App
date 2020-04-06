@@ -39,7 +39,7 @@ export const Developer=(props)=>{
     
     return(
         <View style={{flex:1,backgroundColor:'#003da1'}}> 
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{paddingBottom:200}}>
         <Text style={styles.text2}>Corona Virus tracker App</Text>
         <View style={{justifyContent:'center'}}>
@@ -70,7 +70,7 @@ export const Developer=(props)=>{
             <Text style={styles.text3}>  Pratyaksh Tyagi</Text>
             </View>
 
-            <Text style={styles.text4}>B.Tech (1st yr)</Text>
+            <Text style={styles.text4}>B.Tech (Freshman)</Text>
             <Text style={styles.text3}>Indian Institute Of Technology Jodhpur</Text>
             <Social/>
 

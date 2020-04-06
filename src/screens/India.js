@@ -28,8 +28,8 @@ const Home=({navigation})=>{
     return(
         <View style={styles.parent}>
 
-            <ScrollView>
-                <View style={{paddingBottom:normalize(220)}}>
+            <ScrollView showsVerticalScrollIndicator={false} >
+                <View style={{paddingBottom:normalize(280)}}>
             <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}> 
             <Image style={styles.image} source={require('../../assets/img/flag-round-250.png')} ></Image>
             <Text style={styles.text}>  India Cases</Text>

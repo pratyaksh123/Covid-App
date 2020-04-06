@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { Text, View, StyleSheet, TouchableOpacity, Button ,ScrollView,ActivityIndicator} from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity ,ScrollView,ActivityIndicator} from 'react-native'
 import Corona from "../../api/data"
 import normalize from 'react-native-normalize'
 
@@ -13,6 +13,8 @@ export const Index = ({ navigation }) => {
 
     useEffect(() => { api() }, [])
 
+
+
     const ConvertToIndianSystem = (string) => {
         var x = string;
         x = x.toString();
@@ -24,9 +26,10 @@ export const Index = ({ navigation }) => {
         return res;
     }
     return (
+        
         <View style={style.parent}>
-            <ScrollView contentContainerStyle={{flexGrow:1}}>
-                <View style={{alignItems:'center',paddingBottom:normalize(150)}}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow:1}}>
+                <View style={{alignItems:'center',paddingBottom:normalize(240)}}>
             <Text style={style.index} >Corona Virus</Text>
             <Text style={style.index1} >World at a Glance</Text>
             {total.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', marginVertical:normalize(200),}}><ActivityIndicator size="large" color="white" /></View>) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#FF4600' }}>Confirmed - {ConvertToIndianSystem(total[0].confirmed)}</Text></View>)}
@@ -40,6 +43,7 @@ export const Index = ({ navigation }) => {
 
             {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#5A5350', }}>Deaths - {ConvertToIndianSystem(total[0].deaths)}</Text></View>)}
 
+           
             <View style={{ flexDirection: 'row', }}>
                 <TouchableOpacity onPress={() => {
                     api()

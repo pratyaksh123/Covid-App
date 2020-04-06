@@ -45,6 +45,7 @@ const Drawer=createDrawerNavigator({
   Developer:createStackNavigator({Developer},{
   defaultNavigationOptions:{
   headerLeft:(<HamburgerIcon/>),
+  headerRight:(<Shareicon/>),
   headerTitle:"Developer's Info",
   headerTintColor:'white',
   headerTitleAlign:'center',

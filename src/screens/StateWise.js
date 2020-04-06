@@ -17,7 +17,7 @@ const State=()=>{
 
     return(
         <View style={styles.parent}>
-             <ScrollView style={{flexGrow:1}}>
+             <ScrollView showsVerticalScrollIndicator={false} style={{flexGrow:1}}>
                  <View style={{paddingBottom:600}}>
             <Text style={styles.text}>State Wise Data</Text>
 

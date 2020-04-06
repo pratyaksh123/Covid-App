@@ -12,7 +12,7 @@ const onShare = async () => {
     try {
       const result = await Share.share({
         message:
-          'Test Message www.google.com',
+          `Download this App to get the latest Corona Virus Data Updates regarding Total Cases/ Cases By Country / StateWise and DistrictWise Cases in India instantly.${"\n"} #StayHome ${"\n"} ${"\n"} Download Here :  <link> `,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {

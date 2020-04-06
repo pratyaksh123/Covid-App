@@ -1,7 +1,7 @@
 import React from 'react'
 import {Image,View,TouchableOpacity,StyleSheet,Text,Linking} from 'react-native'
 import normalize from 'react-native-normalize'
-import { TouchableHighlight } from 'react-native-gesture-handler'
+
 
 
 const Social=()=>{
