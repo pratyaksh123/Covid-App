@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import {Text,View,StyleSheet,ScrollView} from 'react-native'
+import {Text,View,StyleSheet,ScrollView,ActivityIndicator} from 'react-native'
 import {IndiaAPI} from "../../api/data"
 import normalize from 'react-native-normalize'
 import Detail from "../components/StateDetail"
@@ -22,7 +22,7 @@ const State=()=>{
             <Text style={styles.text}>State Wise Data</Text>
 
 
-        {results.length===0 ?(<View style={{ alignItems: 'center', justifyContent: 'center',paddingVertical:normalize(150) }}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23), color: 'white', }} >Loading..</Text></View>) :(<Detail name={results.Maharashtra.state} recovered={results.Maharashtra.recovered} confirmed={results.Maharashtra.confirmed} active={results.Maharashtra.active} deaths={results.Maharashtra.deaths} />)}
+        {results.length===0 ?(<View style={{ alignItems: 'center', justifyContent: 'center', marginVertical:normalize(200),}}><ActivityIndicator size="large" color="white" /></View>) :(<Detail name={results.Maharashtra.state} recovered={results.Maharashtra.recovered} confirmed={results.Maharashtra.confirmed} active={results.Maharashtra.active} deaths={results.Maharashtra.deaths} />)}
 
 
         {results.length===0 ?(null) :(<Detail name={results.Delhi.state} recovered={results.Delhi.recovered} confirmed={results.Delhi.confirmed} active={results.Delhi.active} deaths={results.Delhi.deaths} />)}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { Text, View, StyleSheet,FlatList} from 'react-native'
+import { Text, View, StyleSheet,FlatList,ActivityIndicator} from 'react-native'
 import {world} from "../../api/data"
 import normalize from 'react-native-normalize'
 import {DetailCountries} from "../components/StateDetail"
@@ -33,17 +33,19 @@ const WorldData=()=>{
         <>
         <View>
         <Text style={styles.text}>Country Data</Text>
-        {data.length===0?(<Text style={{textAlign:'center',fontFamily:'Bebas Neue',fontSize:normalize(23)}}>Loading..</Text>):(null)}
+        {data.length===0?(<View style={{ alignItems: 'center', justifyContent: 'center', marginVertical:normalize(10),}}><ActivityIndicator size="small" color="black" /></View>):(null)}
              
         </View>
         <View style={styles.parent}>
-
+            
             <FlatList data={data} renderItem={({item})=>{
                 return(
                 <DetailCountries name={item.country_name} confirmed={item.cases} active={item.active_cases} deaths={item.deaths} recovered={item.total_recovered} />
                 )
             }}  keyExtractor={(data)=>{data.country_name}}
-            ListHeaderComponent={<SearchBar      
+            ListHeaderComponent={
+            <>
+            <SearchBar      
                 placeholder="Search by Country name"        
                 lightTheme={true}       
                 round  
@@ -51,7 +53,10 @@ const WorldData=()=>{
                 value={name}
                 onChangeText={text => searchFilterFunction(text)}
                 autoCorrect={false}             
-            />}
+            /> 
+            <Text style={{textAlign:'center',fontFamily:'Agency FB',fontSize:normalize(17),color:'white',paddingTop:5}} >Pull to Refresh..</Text>
+        </>
+        }
             refreshing={refreshing}
             onRefresh={()=>{api()}}
             showsVerticalScrollIndicator={false}

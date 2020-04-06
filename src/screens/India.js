@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity,Image,ScrollView } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity,Image,ScrollView,ActivityIndicator } from 'react-native'
 import {IndiaAPI} from "../../api/data"
 import normalize from 'react-native-normalize'
 
@@ -37,7 +37,7 @@ const Home=({navigation})=>{
             <Text style={{fontFamily:"Agency FB",color:'white',textAlign:'center',}}>Updated- {results.lastupdatedtime}</Text>
             <View style={{alignItems:'center'}}>
 
-            {results.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', marginVertical:normalize(180),}}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23), color: 'white',paddingVertical:normalize(50) }} >Loading..</Text></View>) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) ,color:'#FF4600'}}>Confirmed - {ConvertToIndianSystem(results.confirmed)}</Text></View>)}
+            {results.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', marginVertical:normalize(200),}}><ActivityIndicator size="large" color="white" /></View>) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) ,color:'#FF4600'}}>Confirmed - {ConvertToIndianSystem(results.confirmed)}</Text></View>)}
 
 
             {results.length === 0 ? (null) : (<View style={styles.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#1B41D9' }}>Active - {ConvertToIndianSystem(results.active)}</Text></View>)}
