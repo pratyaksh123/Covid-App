@@ -11,7 +11,6 @@ import {Developer} from "./src/screens/Developer"
 import HamburgerIcon from './src/screens/Developer';
 
 
-
 const Navigator=createStackNavigator({
   Index:HomeScreen,
   World:WorldData,
