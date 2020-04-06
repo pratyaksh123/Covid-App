@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { Text, View, StyleSheet, TouchableOpacity, Button ,ScrollView,FlatList, RefreshControl} from 'react-native'
+import { Text, View, StyleSheet,FlatList} from 'react-native'
 import {world} from "../../api/data"
 import normalize from 'react-native-normalize'
 import {DetailCountries} from "../components/StateDetail"
@@ -37,7 +37,6 @@ const WorldData=()=>{
              
         </View>
         <View style={styles.parent}>
-
 
             <FlatList data={data} renderItem={({item})=>{
                 return(

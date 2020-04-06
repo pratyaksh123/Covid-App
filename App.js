@@ -9,26 +9,29 @@ import Safety from "./src/screens/SafetyTips"
 import {createDrawerNavigator} from 'react-navigation-drawer'
 import {Developer} from "./src/screens/Developer"
 import HamburgerIcon from './src/screens/Developer';
+import {Shareicon} from './src/screens/Index';
 
 
 const Navigator=createStackNavigator({
-  Index:HomeScreen,
+  Index:{screen:HomeScreen,
+    navigationOptions:{
+      headerTitle:'#StayHome',
+      headerRight:(<Shareicon/>),
+    }
+  },
   World:WorldData,
   Home:Home,
   Safety:Safety,
   StateList:State,
 },{
   initialRouteName:'Index',
-  navigationOptions:{
-    
-  },
   defaultNavigationOptions:{
     headerLeft:(<HamburgerIcon/>),
     headerTitle:null,
     headerTitleAlign:'center',
     headerTintColor:'white',
     headerStyle:{
-      backgroundColor:'#003da1',
+    backgroundColor:'#003da1',
     }
   }
 })
