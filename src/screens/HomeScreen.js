@@ -1,8 +1,53 @@
-import React, { useState, useEffect} from 'react'
-import { Text, View, StyleSheet, TouchableOpacity ,ScrollView,ActivityIndicator} from 'react-native'
+import React, { useState, useEffect,Component} from 'react'
+import { Text, View, StyleSheet, Share,TouchableOpacity ,ScrollView,ActivityIndicator} from 'react-native'
 import Corona from "../../api/data"
 import normalize from 'react-native-normalize'
+import { withNavigation } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
+
+const onShare = async () => {
+    const response = await Corona.get()
+    try {
+      const result = await Share.share({
+        message:`Corona Virus Updates - ${"\n"}${"\n"}Confirmed Cases -${response.data[0].confirmed}${"\n"}Recovered - ${response.data[0].recovered}${"\n"}Critical Cases - ${response.data[0].critical}${"\n"}Deaths - ${response.data[0].deaths}${"\n"}${"\n"}Download this App to get the latest Corona Virus Data Updates at your Fingertips .${"\n"} #StayHome ${"\n"} ${"\n"}Download Here :  <link>`,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+
+
+class ShareIcon extends Component{
+    render() {
+    return (
+        <TouchableOpacity
+        style={{
+            width: 44,
+            height: 44,
+            marginLeft: 20,
+            marginTop: normalize(30),
+        }}
+        onPress={()=>{
+            onShare();
+        }}>
+            <Icon name='share-alt' size={20} color='white'/>
+        </TouchableOpacity>
+    )
+    };
+}
+
+export const Shareicon=withNavigation(ShareIcon)
 
 export const Index = ({ navigation }) => {
     const [total, setTotal] = useState([])
@@ -29,7 +74,7 @@ export const Index = ({ navigation }) => {
         
         <View style={style.parent}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow:1}}>
-                <View style={{alignItems:'center',paddingBottom:normalize(240)}}>
+            <View style={{alignItems:'center',paddingBottom:normalize(240)}}>
             <Text style={style.index} >Corona Virus</Text>
             <Text style={style.index1} >World at a Glance</Text>
             {total.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', marginVertical:normalize(200),}}><ActivityIndicator size="large" color="white" /></View>) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#FF4600' }}>Confirmed - {ConvertToIndianSystem(total[0].confirmed)}</Text></View>)}

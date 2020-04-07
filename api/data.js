@@ -1,3 +1,5 @@
+import getkey from ".././keys"
+
 const axios = require("axios");
 
 const Corona=axios.create({
@@ -6,7 +8,7 @@ const Corona=axios.create({
     "headers":{
     "content-type":"application/octet-stream",
     "x-rapidapi-host":"covid-19-data.p.rapidapi.com",
-    "x-rapidapi-key":"c130f1c0cdmsh0a99e57f104ddbcp1fee5djsne945825c4bb2"
+    "x-rapidapi-key":getkey()
     },"params":{
     "format":"undefined"
     }
@@ -18,7 +20,7 @@ export const IndiaAPI= axios.create({
     "headers":{
     "content-type":"application/octet-stream",
     "x-rapidapi-host":"corona-virus-world-and-india-data.p.rapidapi.com",
-    "x-rapidapi-key":"c130f1c0cdmsh0a99e57f104ddbcp1fee5djsne945825c4bb2"
+    "x-rapidapi-key":getkey()
     }
     })
 
@@ -28,7 +30,7 @@ export const world =axios.create({
     "headers":{
     "content-type":"application/octet-stream",
     "x-rapidapi-host":"corona-virus-world-and-india-data.p.rapidapi.com",
-    "x-rapidapi-key":"c130f1c0cdmsh0a99e57f104ddbcp1fee5djsne945825c4bb2"
+    "x-rapidapi-key":getkey()
     }
     })
 

@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
+    "@react-native-community/netinfo": "^5.7.0",
     "@react-navigation/drawer": "^5.4.0",
     "axios": "^0.19.2",
     "expo": "^37.0.3",
-    "native-base": "^2.13.12",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
@@ -33,5 +33,5 @@
     "babel-preset-expo": "~8.1.0",
     "@babel/core": "^7.8.6"
   },
-  "private": true
+  "private": false
 }

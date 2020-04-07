@@ -1,15 +1,18 @@
 {
   "expo": {
-    "name": "Corona Tracker",
+    "name": "COVID-19 Tracker",
+    "icon": "./assets/img/icon.png",
     "slug": "vetecorona",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "android": {
+      "package": "com.coronaTracker.CoronaTracker",
+      "versionCode": 1,
       "splash": {
         "mdpi": "./assets/img/splash/SplashScreen-mdpi.png",
         "hdpi": "./assets/img/splash/SplashScreen-hdpi.png",
@@ -20,6 +23,8 @@
       }
     },
     "ios": {
+      "bundleIdentifier": "com.coronaTracker.CoronaTracker",
+      "buildNumber": "1.0.0",
       "splash": {
         "image": "./assets/img/splash/SplashScreen.png",
         "resizeMode": "cover"
@@ -29,7 +34,7 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "../../assets/img/flag-round-250.png"
     ],
     "description": "Realtime Coronavirus Data updates."
   }

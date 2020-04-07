@@ -1,8 +1,55 @@
-import React,{useEffect,useState} from 'react'
-import {Text,View,StyleSheet,ScrollView,ActivityIndicator} from 'react-native'
+import React,{useEffect,useState,Component} from 'react'
+import {Text,TouchableOpacity,Share,View,StyleSheet,ScrollView,ActivityIndicator} from 'react-native'
 import {IndiaAPI} from "../../api/data"
 import normalize from 'react-native-normalize'
 import Detail from "../components/StateDetail"
+import { withNavigation } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+
+const onShare = async () => {
+    const response = await IndiaAPI.get()
+    try {
+      const result = await Share.share({
+        message:`Corona Virus Updates For India (Top 3 States)-${"\n"}${response.data.state_wise.Maharashtra.state}${"\n"}${"\n"}Confirmed Cases -${response.data.state_wise.Maharashtra.confirmed}${"\n"}Recovered - ${response.data.state_wise.Maharashtra.recovered}${"\n"}Active Cases - ${response.data.state_wise.Maharashtra.active}${"\n"}Deaths - ${response.data.state_wise.Maharashtra.deaths}${"\n"}${"\n"}${response.data.state_wise['Tamil Nadu'].state}${"\n"}${"\n"}Confirmed Cases -${response.data.state_wise['Tamil Nadu'].confirmed}${"\n"}Recovered - ${response.data.state_wise['Tamil Nadu'].recovered}${"\n"}Active Cases - ${response.data.state_wise['Tamil Nadu'].active}${"\n"}Deaths - ${response.data.state_wise['Tamil Nadu'].deaths}${"\n"}${"\n"}${response.data.state_wise.Delhi.state}${"\n"}${"\n"}Confirmed Cases -${response.data.state_wise.Delhi.confirmed}${"\n"}Recovered - ${response.data.state_wise.Delhi.recovered}${"\n"}Active Cases - ${response.data.state_wise.Delhi.active}${"\n"}Deaths - ${response.data.state_wise.Delhi.deaths}${"\n"}${"\n"} For all states , Download this App to get the latest Corona Virus Data Updates at your Fingertips .${"\n"} #StayHome ${"\n"} ${"\n"}Download Here :  <link> `,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+
+
+class ShareIcon extends Component{
+    render() {
+    return (
+        <TouchableOpacity
+        style={{
+            width: 44,
+            height: 44,
+            marginLeft: 20,
+            marginTop: normalize(30),
+        }}
+        onPress={()=>{
+            onShare();
+        }}>
+            <Icon name='share-alt' size={20} color='white'/>
+        </TouchableOpacity>
+    )
+    };
+}
+
+export const ShareState=withNavigation(ShareIcon)
+
 
 
 const State=()=>{

@@ -3,52 +3,10 @@ import {AppLoading} from 'expo';
 import {Index} from "./HomeScreen"
 import { withNavigation } from 'react-navigation';
 import React,{ useState,Component} from 'react'
-import {TouchableOpacity,Share,Text,View} from 'react-native'
+import {TouchableOpacity} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import normalize from 'react-native-normalize'
 
-
-const onShare = async () => {
-    try {
-      const result = await Share.share({
-        message:
-          `Download this App to get the latest Corona Virus Data Updates regarding Total Cases/ Cases By Country / StateWise and DistrictWise Cases in India instantly.${"\n"} #StayHome ${"\n"} ${"\n"} Download Here :  <link> `,
-      });
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-
-
-class ShareIcon extends Component{
-    render() {
-    return (
-        <TouchableOpacity
-        style={{
-            width: 44,
-            height: 44,
-            marginLeft: 20,
-            marginTop: normalize(30),
-        }}
-        onPress={()=>{
-            onShare();
-        }}>
-            <Icon name='share-alt' size={20} color='white'/>
-        </TouchableOpacity>
-    )
-    };
-}
-export const Shareicon=withNavigation(ShareIcon)
 
 
 class BackButton extends Component{

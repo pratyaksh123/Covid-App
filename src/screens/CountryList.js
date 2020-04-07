@@ -1,9 +1,55 @@
-import React, { useState, useEffect} from 'react'
-import { Text, View, StyleSheet,FlatList,ActivityIndicator} from 'react-native'
+import React, { useState, useEffect,Component} from 'react'
+import { Text, View, Share,StyleSheet,FlatList,ActivityIndicator,TouchableOpacity} from 'react-native'
 import {world} from "../../api/data"
 import normalize from 'react-native-normalize'
 import {DetailCountries} from "../components/StateDetail"
 import {SearchBar} from 'react-native-elements'
+import { withNavigation } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+
+const onShare = async () => {
+    const response = await world.get()
+    try {
+      const result = await Share.share({
+        message:`Corona Virus Updates (Top 3 Countries) - ${"\n"}${"\n"}${response.data.countries_stat[0].country_name}${"\n"}${"\n"}Confirmed Cases -${response.data.countries_stat[0].cases}${"\n"}Recovered - ${response.data.countries_stat[0].total_recovered}${"\n"}Active Cases - ${response.data.countries_stat[0].active_cases}${"\n"}Deaths - ${response.data.countries_stat[0].deaths}${"\n"}${"\n"}${response.data.countries_stat[1].country_name}${"\n"}${"\n"}Confirmed Cases -${response.data.countries_stat[1].cases}${"\n"}Recovered - ${response.data.countries_stat[1].total_recovered}${"\n"}Active Cases - ${response.data.countries_stat[1].active_cases}${"\n"}Deaths - ${response.data.countries_stat[1].deaths}${"\n"}${"\n"}${response.data.countries_stat[2].country_name}${"\n"}${"\n"}Confirmed Cases -${response.data.countries_stat[2].cases}${"\n"}Recovered - ${response.data.countries_stat[2].total_recovered}${"\n"}Active Cases - ${response.data.countries_stat[2].active_cases}${"\n"}Deaths - ${response.data.countries_stat[2].deaths}${"\n"}${"\n"}For all Countries,Download this App to get the latest Corona Virus Data Updates at your Fingertips .${"\n"} #StayHome ${"\n"} ${"\n"}Download Here :  <link>`,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+
+
+class ShareIcon extends Component{
+    render() {
+    return (
+        <TouchableOpacity
+        style={{
+            width: 44,
+            height: 44,
+            marginLeft: 20,
+            marginTop: normalize(30),
+        }}
+        onPress={()=>{
+            onShare();
+        }}>
+            <Icon name='share-alt' size={20} color='white'/>
+        </TouchableOpacity>
+    )
+    };
+}
+
+export const ShareCountry=withNavigation(ShareIcon)
 
 
 
