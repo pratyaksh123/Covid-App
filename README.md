@@ -4,8 +4,9 @@
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 
 
-An open Source cross Platform application built on react-native, contributions to the framework are welcome!
 ![banner](https://user-images.githubusercontent.com/55044774/78933236-a0510900-7ac6-11ea-9c1d-c950d78beeae.png)
+
+An open Source cross Platform application built on react-native, contributions to the framework are welcome!
 Some of the features-<br/>
 1.Get Realtime COVID-19 Data Updates.<br/>
 2.Share the Data with others using the share button.<br/>
@@ -17,6 +18,11 @@ Due to Some restrictions by Gov. on apps realted to COVID-19 , Could not get thi
 
 ###### As of now this is not supported for iOS , as expo has suspended thier app client support for apple apps.
 read here https://blog.expo.io/upcoming-limitations-to-ios-expo-client-8076d01aee1a
+
+Steps To Run-
+1 . Run ``` expo start ```
+2 . You may need your own API keys to call the rapid API using Axios.
+
 
 ScreenShots-
 
