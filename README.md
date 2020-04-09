@@ -1,6 +1,6 @@
 # COVID-19 Tracker Application
 ### App to get Realtime Corona Virus Data Updates
-[![GitHub Release](https://img.shields.io/github/release/tterb/PlayMusic.svg?style=flat)]()
+[![Generic badge](https://img.shields.io/badge/release-v1.1.0-yellow.svg)](https://shields.io/)
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 [![Generic badge](https://img.shields.io/badge/npm-v6.14.4-red.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Expo-SDK(37.0)-green.svg)](https://shields.io/)
