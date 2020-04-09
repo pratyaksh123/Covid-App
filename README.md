@@ -3,7 +3,7 @@
 
 An open Source cross Platform application built on react-native, contributions to the framework are welcome!
 
-Some of the features- 
+Some of the features-<br/>
 1.Get Realtime COVID-19 Data Updates.
 2.Share the Data with others using the share button.
 3.Avoid Fake News and be the first to get updates.
