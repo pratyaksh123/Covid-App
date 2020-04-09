@@ -1,6 +1,7 @@
 # COVID-19 Tracker Application
 ### App to get Realtime Corona Virus Data Updates
 [![GitHub Release](https://img.shields.io/github/release/tterb/PlayMusic.svg?style=flat)]()
+[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 
 An open Source cross Platform application built on react-native, contributions to the framework are welcome!
 
