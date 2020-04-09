@@ -3,7 +3,7 @@
 [![GitHub Release](https://img.shields.io/github/release/tterb/PlayMusic.svg?style=flat)]()
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 [![Generic badge](https://img.shields.io/badge/npm-v6.14.4-red.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Expo-SDK-37.0-yellow.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Expo-SDK-37.0-green.svg)](https://shields.io/)
 
 ![banner](https://user-images.githubusercontent.com/55044774/78933236-a0510900-7ac6-11ea-9c1d-c950d78beeae.png)
 
