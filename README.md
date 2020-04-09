@@ -10,8 +10,8 @@ Some of the features-
 
 Due to Some restrictions by Gov. on apps realted to COVID-19 , Could not get this on google play.
 
-#######  Download Link (Android)- https://drive.google.com/uc?id=1vyNB-fDHzA6UgRS-u0WmxXNzVp_o3YYk&export=download
+###### Download Link (Android)- https://drive.google.com/uc?id=1vyNB-fDHzA6UgRS-u0WmxXNzVp_o3YYk&export=download
 
-####### As of now this is not supported for iOS , as expo has suspended thier app client support for apple apps.
+###### As of now this is not supported for iOS , as expo has suspended thier app client support for apple apps.
 read here https://blog.expo.io/upcoming-limitations-to-ios-expo-client-8076d01aee1a
 
