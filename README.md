@@ -17,11 +17,11 @@ read here https://blog.expo.io/upcoming-limitations-to-ios-expo-client-8076d01ae
 
 ScreenShots-
 
-![Screenshot_2020-04-07-01-26-10-088_host exp exponent](https://user-images.githubusercontent.com/55044774/78925201-b061ec00-7ab8-11ea-8283-2ad74b3fb04f.jpg)
-![Screenshot_2020-04-07-01-26-17-726_host exp exponent](https://user-images.githubusercontent.com/55044774/78925207-b2c44600-7ab8-11ea-9e5c-b07659bb0731.jpg)
-![Screenshot_2020-04-07-01-26-27-021_host exp exponent](https://user-images.githubusercontent.com/55044774/78925211-b48e0980-7ab8-11ea-853e-3168ee773be9.jpg)
-![Screenshot_2020-04-07-01-26-34-717_host exp exponent](https://user-images.githubusercontent.com/55044774/78925216-b788fa00-7ab8-11ea-8f2a-2f5ec257bb4a.jpg)
-![Screenshot_2020-04-07-01-24-01-282_host exp exponent](https://user-images.githubusercontent.com/55044774/78925220-bbb51780-7ab8-11ea-9ffa-d9d419d42fc3.jpg)
+![World Data](https://user-images.githubusercontent.com/55044774/78925405-ff0f8600-7ab8-11ea-965b-053ff2a85f6e.png)
+![India Data](https://user-images.githubusercontent.com/55044774/78925412-0040b300-7ab9-11ea-9617-32b045580616.png)
+![Safety Tips](https://user-images.githubusercontent.com/55044774/78925413-00d94980-7ab9-11ea-8a45-31e30e53c2b9.png)
+![SplashScreen](https://user-images.githubusercontent.com/55044774/78925414-020a7680-7ab9-11ea-8b04-0ae675ea78fd.png)
+![StateData](https://user-images.githubusercontent.com/55044774/78925415-02a30d00-7ab9-11ea-9681-bb93fc5fd16c.png)
 ![Intro](https://user-images.githubusercontent.com/55044774/78924879-26198800-7ab8-11ea-8f58-46eb442b42b0.png)
 
 
