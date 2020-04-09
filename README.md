@@ -3,8 +3,9 @@
 [![GitHub Release](https://img.shields.io/github/release/tterb/PlayMusic.svg?style=flat)]()
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 
-An open Source cross Platform application built on react-native, contributions to the framework are welcome!
 
+An open Source cross Platform application built on react-native, contributions to the framework are welcome!
+![banner](https://user-images.githubusercontent.com/55044774/78933236-a0510900-7ac6-11ea-9c1d-c950d78beeae.png)
 Some of the features-<br/>
 1.Get Realtime COVID-19 Data Updates.<br/>
 2.Share the Data with others using the share button.<br/>
