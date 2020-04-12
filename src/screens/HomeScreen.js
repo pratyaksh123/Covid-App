@@ -1,16 +1,25 @@
 import React, { useState, useEffect,Component} from 'react'
 import { Text, View, StyleSheet, Share,TouchableOpacity ,ScrollView,ActivityIndicator} from 'react-native'
 import Corona from "../../api/data"
+import {world} from "../../api/data"
 import normalize from 'react-native-normalize'
 import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Analytics, PageHit } from 'expo-analytics';
+import {key} from "../../keys"
+
 
 
 const onShare = async () => {
     const response = await Corona.get()
     try {
+        const analytics = new Analytics(key());
+        analytics.hit(new PageHit('Home_Share'))
+        .then(() => console.log("HomePage"))
+        .catch(e => console.log(e.message));
+
       const result = await Share.share({
-        message:`Corona Virus Updates - ${"\n"}${"\n"}Confirmed Cases -${response.data[0].confirmed}${"\n"}Recovered - ${response.data[0].recovered}${"\n"}Critical Cases - ${response.data[0].critical}${"\n"}Deaths - ${response.data[0].deaths}${"\n"}${"\n"}Download this App to get the latest Corona Virus Data Updates at your Fingertips .${"\n"} #StayHome ${"\n"} ${"\n"}Download Here :  <link>`,
+        message:`Corona Virus Updates - ${"\n"}${"\n"}Confirmed Cases -${response.data[0].confirmed}${"\n"}Recovered - ${response.data[0].recovered}${"\n"}Critical Cases - ${response.data[0].critical}${"\n"}Deaths - ${response.data[0].deaths}${"\n"}${"\n"}Download this App to get the latest Corona Virus Data Updates at your Fingertips .${"\n"} #StayHome ${"\n"} ${"\n"}Download Here :  https://drive.google.com/uc?id=1vyNB-fDHzA6UgRS-u0WmxXNzVp_o3YYk&export=download`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -50,13 +59,28 @@ class ShareIcon extends Component{
 export const Shareicon=withNavigation(ShareIcon)
 
 export const Index = ({ navigation }) => {
+    
+
+
+
     const [total, setTotal] = useState([])
+    const [delta, setDelta] = useState([])
     const api = async () => {
         const response = await Corona.get()
+        const delta=await world.get()
         setTotal(response.data)
+        setDelta(delta.data.world_total)
     }
 
-    useEffect(() => { api() }, [])
+    useEffect(() => { 
+                
+const analytics = new Analytics(key());
+analytics.hit(new PageHit('Home'))
+  .then(() => console.log("HomePage"))
+  .catch(e => console.log(e.message));
+
+        
+        api() }, [])
 
 
 
@@ -77,7 +101,7 @@ export const Index = ({ navigation }) => {
             <View style={{alignItems:'center',paddingBottom:normalize(240)}}>
             <Text style={style.index} >Corona Virus</Text>
             <Text style={style.index1} >World at a Glance</Text>
-            {total.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', marginVertical:normalize(200),}}><ActivityIndicator size="large" color="white" /></View>) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#FF4600' }}>Confirmed - {ConvertToIndianSystem(total[0].confirmed)}</Text></View>)}
+            {total.length === 0 ? (<View style={{ alignItems: 'center', justifyContent: 'center', marginVertical:normalize(200),}}><ActivityIndicator size="large" color="white" /></View>) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#FF4600' }}>Confirmed - {ConvertToIndianSystem(total[0].confirmed)}  (+{delta.new_cases})</Text></View>)}
 
 
             {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#1B41D9' }}>Critical - {ConvertToIndianSystem(total[0].critical)}</Text></View>)}
@@ -86,7 +110,7 @@ export const Index = ({ navigation }) => {
             {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23) ,color:'#49A828'}}>Recovered - {ConvertToIndianSystem(total[0].recovered)} </Text></View>)}
 
 
-            {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#5A5350', }}>Deaths - {ConvertToIndianSystem(total[0].deaths)}</Text></View>)}
+            {total.length === 0 ? (null) : (<View style={style.ButtonData}><Text style={{ fontFamily: 'Bebas Neue', fontSize: normalize(23),color:'#5A5350', }}>Deaths - {ConvertToIndianSystem(total[0].deaths)} (+{delta.new_deaths})</Text></View>)}
 
            
             <View style={{ flexDirection: 'row', }}>
@@ -106,6 +130,7 @@ export const Index = ({ navigation }) => {
                 </TouchableOpacity>
                 
                 <TouchableOpacity navigation={navigation} onPress={() => {
+                                  
                     navigation.navigate('Home')
                 }} style={style.index}>
                     <View style={style.button}>

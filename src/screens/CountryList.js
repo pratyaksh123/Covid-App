@@ -6,13 +6,23 @@ import {DetailCountries} from "../components/StateDetail"
 import {SearchBar} from 'react-native-elements'
 import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Analytics, PageHit } from 'expo-analytics';
+import {key} from "../../keys"
+
+
 
 
 const onShare = async () => {
     const response = await world.get()
     try {
+        const analytics = new Analytics(key());
+        analytics.hit(new PageHit('Country_Cases_Share'))
+        .then(() => console.log("Success"))
+        .catch(e => console.log(e.message));
+
+
       const result = await Share.share({
-        message:`Corona Virus Updates (Top 3 Countries) - ${"\n"}${"\n"}${response.data.countries_stat[0].country_name}${"\n"}${"\n"}Confirmed Cases -${response.data.countries_stat[0].cases}${"\n"}Recovered - ${response.data.countries_stat[0].total_recovered}${"\n"}Active Cases - ${response.data.countries_stat[0].active_cases}${"\n"}Deaths - ${response.data.countries_stat[0].deaths}${"\n"}${"\n"}${response.data.countries_stat[1].country_name}${"\n"}${"\n"}Confirmed Cases -${response.data.countries_stat[1].cases}${"\n"}Recovered - ${response.data.countries_stat[1].total_recovered}${"\n"}Active Cases - ${response.data.countries_stat[1].active_cases}${"\n"}Deaths - ${response.data.countries_stat[1].deaths}${"\n"}${"\n"}${response.data.countries_stat[2].country_name}${"\n"}${"\n"}Confirmed Cases -${response.data.countries_stat[2].cases}${"\n"}Recovered - ${response.data.countries_stat[2].total_recovered}${"\n"}Active Cases - ${response.data.countries_stat[2].active_cases}${"\n"}Deaths - ${response.data.countries_stat[2].deaths}${"\n"}${"\n"}For all Countries,Download this App to get the latest Corona Virus Data Updates at your Fingertips .${"\n"} #StayHome ${"\n"} ${"\n"}Download Here :  <link>`,
+        message:`Corona Virus Updates (Top 3 Countries) - ${"\n"}${"\n"}${response.data.countries_stat[0].country_name}${"\n"}${"\n"}Confirmed Cases -${response.data.countries_stat[0].cases}${"\n"}Recovered - ${response.data.countries_stat[0].total_recovered}${"\n"}Active Cases - ${response.data.countries_stat[0].active_cases}${"\n"}Deaths - ${response.data.countries_stat[0].deaths}${"\n"}${"\n"}${response.data.countries_stat[1].country_name}${"\n"}${"\n"}Confirmed Cases -${response.data.countries_stat[1].cases}${"\n"}Recovered - ${response.data.countries_stat[1].total_recovered}${"\n"}Active Cases - ${response.data.countries_stat[1].active_cases}${"\n"}Deaths - ${response.data.countries_stat[1].deaths}${"\n"}${"\n"}${response.data.countries_stat[2].country_name}${"\n"}${"\n"}Confirmed Cases -${response.data.countries_stat[2].cases}${"\n"}Recovered - ${response.data.countries_stat[2].total_recovered}${"\n"}Active Cases - ${response.data.countries_stat[2].active_cases}${"\n"}Deaths - ${response.data.countries_stat[2].deaths}${"\n"}${"\n"}For all Countries,Download this App to get the latest Corona Virus Data Updates at your Fingertips .${"\n"} #StayHome ${"\n"} ${"\n"}Download Here :  https://drive.google.com/uc?id=1vyNB-fDHzA6UgRS-u0WmxXNzVp_o3YYk&export=download`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -62,7 +72,13 @@ const WorldData=()=>{
         setData(response.data.countries_stat)
     }   
     
-    useEffect(()=>{api()},[])
+    useEffect(()=>{
+      const analytics = new Analytics(key());
+analytics.hit(new PageHit('CountryCases'))
+  .then(() => console.log("Success"))
+  .catch(e => console.log(e.message));
+      
+      api()},[])
 
     searchFilterFunction = text => {    
           setName(text)
@@ -86,7 +102,7 @@ const WorldData=()=>{
             
             <FlatList data={data} renderItem={({item})=>{
                 return(
-                <DetailCountries name={item.country_name} confirmed={item.cases} active={item.active_cases} deaths={item.deaths} recovered={item.total_recovered} />
+                <DetailCountries name={item.country_name} confirmed={item.cases} active={item.active_cases} deaths={item.deaths} recovered={item.total_recovered} deltaConfirmed={item.new_cases} deltaDeaths={item.new_deaths} />
                 )
             }}  keyExtractor={(data)=>{data.country_name}}
             ListHeaderComponent={

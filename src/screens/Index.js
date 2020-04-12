@@ -8,7 +8,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import normalize from 'react-native-normalize'
 
 
-
 class BackButton extends Component{
     render() {
     return (
@@ -33,7 +32,6 @@ const getFonts=()=>{
     return Font.loadAsync({
         'Bebas Neue':require('../../assets/fonts/BebasNeue-Regular.otf'),
         'Agency FB':require('../../assets/fonts/agency-fb-1361528436.ttf'),
-        'Jokerman':require('../../assets/fonts/Jokerman-Regular.ttf'),
         'Baloo':require('../../assets/fonts/BalooThambi2-Regular.ttf'),
     })
 }

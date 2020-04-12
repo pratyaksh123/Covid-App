@@ -1,14 +1,19 @@
 import React from 'react'
-import {Image,View,TouchableOpacity,StyleSheet,Text,Linking} from 'react-native'
+import {Image,View,TouchableOpacity,StyleSheet,Linking} from 'react-native'
 import normalize from 'react-native-normalize'
+import { Analytics, PageHit } from 'expo-analytics';
 
 
 
 const Social=()=>{
     return(
         <View style={{flexDirection:'row',justifyContent:'space-around',alignContent:'center',marginTop:10}}>
-            <TouchableOpacity 
-            onPress={()=>{Linking.openURL("https://www.instagram.com/pratyaksh.tyagi/")}}
+            <TouchableOpacity onPress={()=>{
+                const analytics = new Analytics('UA-163012734-2');
+                analytics.hit(new PageHit('Instagram'))
+                .then(() => Linking.openURL("https://www.instagram.com/pratyaksh.tyagi/"))
+                .catch(e => console.log(e.message));
+                }}
             >
             <View>
             <Image style={StyleSheet.image} source={require("../../assets/img/insta.png")}/>
@@ -17,10 +22,15 @@ const Social=()=>{
             </TouchableOpacity>
 
 
-
             <TouchableOpacity
             
-            onPress={()=>{Linking.openURL("https://www.facebook.com/pratyaksh.tyagi.52")}}>
+            onPress={()=>{
+                const analytics = new Analytics('UA-163012734-2');
+                analytics.hit(new PageHit('Facebook'))
+                .then(() =>  Linking.openURL("https://www.facebook.com/pratyaksh.tyagi.52"))
+                .catch(e => console.log(e.message));
+                
+               }}>
                 <View>
                 <Image style={StyleSheet.image} source={require("../../assets/img/facebook.png")}/>
                 </View>
@@ -28,7 +38,13 @@ const Social=()=>{
 
 
             <TouchableOpacity
-            onPress={()=>{Linking.openURL("https://www.linkedin.com/in/pratyaksh-tyagi-59759718b/")}}
+            onPress={()=>{
+                const analytics = new Analytics('UA-163012734-2');
+                analytics.hit(new PageHit('LinkedIN'))
+                .then(() => Linking.openURL("https://www.linkedin.com/in/pratyaksh-tyagi-59759718b/"))
+                .catch(e => console.log(e.message));
+                
+                }}
             >
                 <View>
                 <Image style={StyleSheet.image} source={require("../../assets/img/linkedin.png")}/>

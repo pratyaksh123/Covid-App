@@ -20,7 +20,8 @@
         "xxhdpi": "./assets/img/splash/SplashScreen-xxhdpi.png",
         "xxxhdpi": "./assets/img/splash/SplashScreen-xxxhdpi.png",
         "resizeMode": "cover"
-      }
+      },
+      "googleServicesFile": "./google-services.json"
     },
     "ios": {
       "bundleIdentifier": "com.coronaTracker.CoronaTracker",
