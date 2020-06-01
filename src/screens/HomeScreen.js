@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
+  Vibration,
+  Platform,
 } from "react-native";
 import Corona from "../../api/data";
 import { world } from "../../api/data";
@@ -15,6 +17,9 @@ import { withNavigation } from "react-navigation";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Analytics, PageHit } from "expo-analytics";
 import { key } from "../../keys";
+import { Notifications } from "expo";
+import * as Permissions from "expo-permissions";
+import Constants from "expo-constants";
 
 const onShare = async () => {
   const response = await Corona.get();
@@ -73,11 +78,50 @@ export const Shareicon = withNavigation(ShareIcon);
 export const Index = ({ navigation }) => {
   const [total, setTotal] = useState([]);
   const [delta, setDelta] = useState([]);
+  const [expoPushToken, setExpoPushToken] = useState("");
+  const [notification, setNotification] = useState({});
   const api = async () => {
     const response = await Corona.get();
     const delta = await world.get();
     setTotal(response.data);
     setDelta(delta.data.world_total);
+  };
+
+  const registerForPushNotificationsAsync = async () => {
+    if (Constants.isDevice) {
+      const { status: existingStatus } = await Permissions.getAsync(
+        Permissions.NOTIFICATIONS
+      );
+      let finalStatus = existingStatus;
+      if (existingStatus !== "granted") {
+        const { status } = await Permissions.askAsync(
+          Permissions.NOTIFICATIONS
+        );
+        finalStatus = status;
+      }
+      if (finalStatus !== "granted") {
+        alert("Failed to get push token for push notification!");
+        return;
+      }
+      token = await Notifications.getExpoPushTokenAsync();
+      setExpoPushToken(token);
+    } else {
+      alert("Must use physical device for Push Notifications");
+    }
+
+    if (Platform.OS === "android") {
+      Notifications.createChannelAndroidAsync("default", {
+        name: "default",
+        sound: true,
+        priority: "max",
+        vibrate: [0, 250, 250, 250],
+      });
+    }
+  };
+
+  const handleNotification = (notification) => {
+    Vibration.vibrate();
+    setNotification(notification);
   };
 
   useEffect(() => {
@@ -86,7 +130,8 @@ export const Index = ({ navigation }) => {
       .hit(new PageHit("Home"))
       .then(() => console.log("HomePage"))
       .catch((e) => console.log(e.message));
-
+    registerForPushNotificationsAsync();
+    Notifications.addListener(handleNotification);
     api();
   }, []);
 

@@ -154,7 +154,7 @@ const WorldData = () => {
             );
           }}
           keyExtractor={(data) => {
-            data.country_name;
+            data.active_cases;
           }}
           ListHeaderComponent={
             <>

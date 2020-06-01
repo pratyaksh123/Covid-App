@@ -19,33 +19,33 @@ const Navigator = createStackNavigator(
     Index: {
       screen: HomeScreen,
       navigationOptions: {
-        headerLeft: <HamburgerIcon />,
+        headerLeft: () => <HamburgerIcon />,
         headerTitle: "#StayHome",
-        headerRight: <Shareicon />,
+        headerRight: () => <Shareicon />,
       },
     },
     World: {
       screen: WorldData,
       navigationOptions: {
-        headerRight: <ShareCountry />,
+        headerRight: () => <ShareCountry />,
       },
     },
     Home: {
       screen: Home,
       navigationOptions: {
-        headerRight: <ShareIndia />,
+        headerRight: () => <ShareIndia />,
       },
     },
     Safety: {
       screen: Safety,
       navigationOptions: {
-        headerRight: <Shareicon />,
+        headerRight: () => <Shareicon />,
       },
     },
     StateList: {
       screen: State,
       navigationOptions: {
-        headerRight: <ShareState />,
+        headerRight: () => <ShareState />,
       },
     },
   },
@@ -69,8 +69,8 @@ const Drawer = createDrawerNavigator(
       { Developer },
       {
         defaultNavigationOptions: {
-          headerLeft: <HamburgerIcon />,
-          headerRight: <Shareicon />,
+          headerLeft: () => <HamburgerIcon />,
+          headerRight: () => <Shareicon />,
           headerTitle: "Developer's Info",
           headerTintColor: "white",
           headerTitleAlign: "center",
