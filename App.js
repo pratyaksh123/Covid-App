@@ -14,9 +14,10 @@ import { ShareIndia } from "./src/screens/India";
 import { ShareState } from "./src/screens/StateWise";
 import { ShareCountry } from "./src/screens/CountryList";
 import firebase from "firebase";
+import { googleKey } from "./keys";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCn9pLk7pldQ2OPEFVrB_taz19OKOz0D54",
+  apiKey: googleKey(),
   authDomain: "covid-tracker-7c252.firebaseapp.com",
   databaseURL: "https://covid-tracker-7c252.firebaseio.com",
   projectId: "covid-tracker-7c252",
