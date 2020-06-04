@@ -20,6 +20,9 @@ import { key } from "../../keys";
 import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
+import firebase from "firebase";
+import "firebase/firestore";
+import { AsyncStorage } from "react-native";
 
 const onShare = async () => {
   const response = await Corona.get();
@@ -75,6 +78,40 @@ class ShareIcon extends Component {
 
 export const Shareicon = withNavigation(ShareIcon);
 
+const addTokenToFirestore = async (PushToken) => {
+  try {
+    const token = await AsyncStorage.getItem("token");
+    if (token === null) {
+      // Add token to firestore and then to async storage.
+      const dbh = firebase.firestore();
+      await dbh.collection("Tokens").add({
+        token: PushToken,
+      });
+      await AsyncStorage.setItem("token", PushToken);
+      console.log("Token Added to Firestore and Async Storage!");
+    } else if (token === PushToken) {
+      // Token already up to date
+      console.log("Token Already Up to date !");
+    } else if (token !== PushToken) {
+      // add this new token to firestore and then to async storage
+      const dbh = firebase.firestore();
+      await dbh.collection("Tokens").add({
+        token: PushToken,
+      });
+      await AsyncStorage.setItem("token", PushToken);
+      console.log("Token Updated");
+    } else {
+      console.log("Something got fucked !");
+    }
+    // const dbh = firebase.firestore();
+    // dbh.collection("Tokens").add({
+    //   token: token,
+    // });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const Index = ({ navigation }) => {
   const [total, setTotal] = useState([]);
   const [delta, setDelta] = useState([]);
@@ -104,7 +141,7 @@ export const Index = ({ navigation }) => {
         return;
       }
       token = await Notifications.getExpoPushTokenAsync();
-      setExpoPushToken(token);
+      addTokenToFirestore(token);
     } else {
       alert("Must use physical device for Push Notifications");
     }

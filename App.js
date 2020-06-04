@@ -13,6 +13,20 @@ import { Shareicon } from "./src/screens/HomeScreen";
 import { ShareIndia } from "./src/screens/India";
 import { ShareState } from "./src/screens/StateWise";
 import { ShareCountry } from "./src/screens/CountryList";
+import firebase from "firebase";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCn9pLk7pldQ2OPEFVrB_taz19OKOz0D54",
+  authDomain: "covid-tracker-7c252.firebaseapp.com",
+  databaseURL: "https://covid-tracker-7c252.firebaseio.com",
+  projectId: "covid-tracker-7c252",
+  storageBucket: "covid-tracker-7c252.appspot.com",
+  messagingSenderId: "484285283484",
+  appId: "1:484285283484:web:46ca7b250429a4a399c159",
+  measurementId: "G-XSVMMNYX9X",
+};
+
+firebase.initializeApp(firebaseConfig);
 
 const Navigator = createStackNavigator(
   {

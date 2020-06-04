@@ -145,7 +145,7 @@ const State = () => {
             />
           );
         }}
-        keyExtractor={(item) => item.confirmed * Math.random() * 5676}
+        keyExtractor={(item) => `${item.confirmed * Math.random() * 5676}`}
       />
 
       <Text style={styles.text2}>Help us Fight COVID-19 just by</Text>
