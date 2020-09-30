@@ -1,6 +1,6 @@
 # COVID-19 Tracker Application
 ### App to get Realtime Corona Virus Data Updates
-Check this medium Article on building this app-
+Check this medium Article on building this application-
 
 https://medium.com/@tyagipratyaksh/how-i-made-a-covid-19-tracker-mobile-app-with-react-native-c51422187062
 
